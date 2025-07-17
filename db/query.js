@@ -12,9 +12,10 @@ const userdetail = async (req, res) => {
 }
 
 const userlist = async (req, res) => {
-    const nameregex = /^[a-zA-Z]+$/;
+    const nameregex = new RegExp("^[a-zA-Z]+$");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const names = (nameregex.test(req.body.name));
+    const char = req.body.name.toLowerCase();
+    const names = (nameregex.test(char));
     const emails = emailRegex.test(req.body.email)
 
     if (names == false) {
