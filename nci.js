@@ -21,4 +21,6 @@ apps.get('/api/user/:id', db.userdetail);
 
 apps.get('/api/userall', db.userall);
 
+apps.get('/api/deleteuser/:id', db.deleteuser);
+
 apps.listen(4001);

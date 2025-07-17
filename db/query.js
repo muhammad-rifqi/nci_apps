@@ -42,7 +42,17 @@ const userall = async (req, res) => {
     if (sql.length > 0) {
         res.status(200).json({ "success": true, "data": sql });
     } else {
-        res.status(200).json({ "succuss": "failed", "data": null })
+        res.status(403).json({ "succuss": "failed", "data": null })
+    }
+}
+
+const deleteuser = async (req, res) => {
+    const users_id = req?.params?.id;
+    const sql = await executeQuery("DELETE FROM users where id = $1 ", [users_id]);
+    if (sql) {
+        res.status(200).json({ "success": true });
+    } else {
+        res.status(403).json({ "succuss": false })
     }
 }
 
@@ -50,4 +60,5 @@ module.exports = {
     userlist,
     userdetail,
     userall,
+    deleteuser
 }
