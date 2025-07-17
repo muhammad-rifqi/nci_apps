@@ -39,7 +39,7 @@ const userlist = async (req, res) => {
 
 const userall = async (req, res) => {
     const sql = await executeQuery("SELECT * FROM users");
-    if (query.length > 0) {
+    if (sql.length > 0) {
         res.status(200).json({ "success": true, "data": sql });
     } else {
         res.status(200).json({ "succuss": "failed", "data": null })
